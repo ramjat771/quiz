@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OnlinePaisa | Terms & Conditions</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      margin: 40px auto;
+    }
+    h1, h2, h3 {
+      color: #1e293b;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    p {
+      margin: 12px 0;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    .contact {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 0.95rem;
+    }
+    .muted {
+      color: #555;
+    }
+    a {
+      color: #1e88e5;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Terms and Conditions</h1>
+    <p><strong>Effective Date:</strong> <span id="startDate"></span></p>
+
+    <div class="section">
+      <h2>1. About OnlinePaisa</h2>
+      <p>
+        OnlinePaisa is a platform for small businesses and individuals to buy raw materials and sell finished goods via the app. Users can purchase materials, manufacture products like agarbati, and resell them to the platform to earn income.
+      </p>
+      <p>
+        Our goal is to enable micro-entrepreneurs to manage their business easily, track sales, and maximize profits.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>2. Acceptance of Terms</h2>
+      <p>
+        By using OnlinePaisa, you agree to comply with these Terms and Conditions (“Terms”). If you do not agree, please do not use the app or services. You must be at least 18 years old and legally capable of entering into agreements.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>3. Services Provided</h2>
+      <p>
+        OnlinePaisa allows users to:
+      </p>
+      <ul>
+        <li>Purchase raw materials at listed prices.</li>
+        <li>Submit finished products for resale on the platform.</li>
+        <li>Track sales, earnings, and payouts.</li>
+        <li>Access reports and analytics for business decisions.</li>
+      </ul>
+      <p>
+        Availability of materials and services may vary based on location and stock. OnlinePaisa reserves the right to modify, suspend, or discontinue offerings at any time.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>4. Role of OnlinePaisa</h2>
+      <p>
+        OnlinePaisa acts as a facilitator connecting buyers of raw materials with sellers of finished products. OnlinePaisa is not responsible for the quality, manufacturing, or timely delivery of products; users are solely responsible for production and submission of finished goods.
+      </p>
+      <p>
+        Any disputes between sellers and the platform regarding products or earnings should be addressed according to platform rules.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>5. Orders and Submissions</h2>
+      <ul>
+        <li>Raw materials must be purchased via the OnlinePaisa app.</li>
+        <li>Users must provide accurate details for product submissions, including quantity, quality, and delivery info.</li>
+        <li>Orders or submissions that violate app rules may be rejected, and repeated violations can result in account suspension.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>6. Payments & Earnings</h2>
+      <ul>
+        <li>Users will earn income based on the difference between raw material cost and product resale value.</li>
+        <li>Payouts are processed according to the platform schedule and policies.</li>
+        <li>OnlinePaisa may deduct applicable service fees from earnings.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. User Responsibilities</h2>
+      <ul>
+        <li>Do not use the platform for unlawful, misleading, or fraudulent purposes.</li>
+        <li>Provide accurate product, payment, and contact information.</li>
+        <li>Ensure finished products meet quality standards for resale.</li>
+        <li>Avoid interfering with platform functions or attempting unauthorized access.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>8. Limitation of Liability</h2>
+      <p>
+        OnlinePaisa is not liable for any losses, delays, or damages arising from purchase, production, or resale of products. Total liability is limited to platform fees or payments actually made.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>9. Intellectual Property</h2>
+      <p>
+        All content, branding, and software in OnlinePaisa are owned or licensed by the platform. Users may not copy, modify, or distribute content without written consent.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>10. Privacy</h2>
+      <p>
+        Review our <a href="#">Privacy Policy</a> to understand how we collect, use, and protect your personal and business data.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>11. Changes to Terms</h2>
+      <p>
+        OnlinePaisa may update these Terms at any time. Updated Terms will be published in the app. Continued use after updates implies acceptance of the new Terms.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>12. Governing Law</h2>
+      <p>
+        These Terms are governed by Indian laws. Any disputes shall be resolved in courts located in India.
+      </p>
+    </div>
+
+    <div class="section contact">
+      <h2>13. Contact Us</h2>
+      <p class="muted">
+        For any questions, feedback, or assistance, please contact:
+      </p>
+      <p>
+        📞 Phone: <a id="phoneLink"></a><br />
+        📧 Email: <a id="emailLink"></a><br />
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Configurable variables
+    const contactNumber = "9024776624";
+    const emailAddress = "sunitaq780@gmail.com";
+
+    // Get today's date dynamically
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("en-IN", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+    // Inject dynamic values
+    document.getElementById("startDate").textContent = formattedDate;
+    document.getElementById("phoneLink").textContent = contactNumber;
+    document.getElementById("phoneLink").href = `tel:${contactNumber}`;
+    document.getElementById("emailLink").textContent = emailAddress;
+    document.getElementById("emailLink").href = `mailto:${emailAddress}`;
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OnlinePaisa | Shipping & Delivery Policy</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      margin: 40px auto;
+    }
+    h1, h2 { color: #1e293b; }
+    h1 { text-align: center; margin-bottom: 24px; }
+    ul { padding-left: 20px; }
+    .section { margin-top: 30px; }
+    .contact {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-size: 0.95rem;
+    }
+    .muted { color: #555; }
+    a { color: #1e88e5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shipping & Delivery Policy</h1>
+    <p><strong>Effective Date:</strong> <span id="startDate"></span></p>
+
+    <div class="section">
+      <h2>1. Overview</h2>
+      <p>
+        OnlinePaisa provides a **raw-material supply and buyback service** where users can:
+      </p>
+      <ul>
+        <li>Purchase raw materials through the app, and</li>
+        <li>Convert them into finished products (e.g., agarbatti) and resell them back to OnlinePaisa.</li>
+      </ul>
+      <p>
+        This Shipping & Delivery Policy explains how raw materials are shipped to you and how finished goods are collected from you.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>2. Delivery of Raw Materials</h2>
+      <ul>
+        <li>Once an order is placed and payment is confirmed, OnlinePaisa arranges shipment of raw materials to the user’s provided address.</li>
+        <li>You will receive updates regarding dispatch, delivery partner, and estimated arrival time.</li>
+        <li>Delivery typically takes <strong>3–7 business days</strong>, depending on your location and stock availability.</li>
+        <li>In case of delays due to logistics, weather, or stock issues, users will be informed promptly.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>3. Pickup of Finished Goods</h2>
+      <ul>
+        <li>
+          After you prepare the finished goods (example: agarbatti), OnlinePaisa will arrange pickup from your address.
+        </li>
+        <li>
+          Pickup time is scheduled in advance and coordinated via app notification or phone call.
+        </li>
+        <li>
+          Products must meet the quality and quantity guidelines shown in the app.
+        </li>
+        <li>
+          If pickup is missed due to user unavailability, it may be rescheduled with additional charges depending on location.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>4. Shipping Fees</h2>
+      <ul>
+        <li>
+          Raw material delivery charges (if applicable) will be shown during checkout.
+        </li>
+        <li>
+          Pickup of finished goods may be free or chargeable based on region and quantity.
+        </li>
+        <li>
+          All fees will always be clearly displayed before confirming any order.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>5. Delivery Timeframes</h2>
+      <ul>
+        <li><strong>Raw Material Delivery:</strong> 3–7 business days.</li>
+        <li><strong>Finished Goods Pickup:</strong> Scheduled within 24–72 hours after request.</li>
+        <li>Unforeseen delays will be communicated via app or SMS.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>6. Customer Responsibilities</h2>
+      <ul>
+        <li>Provide accurate address and contact details.</li>
+        <li>Be available during the scheduled delivery or pickup time.</li>
+        <li>Ensure goods are prepared and packaged safely for pickup.</li>
+        <li>Notify support if you need to reschedule at least 12–24 hours in advance.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. Undelivered Shipments</h2>
+      <ul>
+        <li>If delivery of raw materials fails due to incorrect address or unavailability, the shipment may be returned.</li>
+        <li>Redelivery charges may apply for any return-to-origin shipments.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>8. Contact & Support</h2>
+      <p>If you face any issues related to shipping, delivery, or pickup, contact our support team immediately.</p>
+    </div>
+
+    <div class="section contact">
+      <h2>9. Contact Us</h2>
+      <p class="muted">For help or support:</p>
+      <p>
+        📞 Phone: <a id="phoneLink"></a><br />
+        📧 Email: <a id="emailLink"></a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const contactNumber = "9024776624";
+    const emailAddress = "sunitaq780@gmail.com";
+
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("en-IN", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+    document.getElementById("startDate").textContent = formattedDate;
+    document.getElementById("phoneLink").textContent = contactNumber;
+    document.getElementById("phoneLink").href = `tel:${contactNumber}`;
+    document.getElementById("emailLink").textContent = emailAddress;
+    document.getElementById("emailLink").href = `mailto:${emailAddress}`;
+  </script>
+</body>
+</html>
