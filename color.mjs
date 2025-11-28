@@ -14,10 +14,7 @@ async function startServer() {
   // Create socket.io instance with sub-URL "/socket"
   const io = new Server(server, {
     path: "/socket",
-    cors: {
-      origin: "*",
-      methods: ["GET", "POST"]
-    }
+
   });
 
   // Attach socket handlers
