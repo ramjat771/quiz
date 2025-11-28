@@ -3,7 +3,7 @@ import { getRandomResult } from "./result.mjs";
 // socket/counter.mjs
 
 export const startGlobalCounter = (io) => {
-  let counter = 15;
+  let counter = 30;
 let totalCount=0;
   setInterval(async() => {
     counter--;
@@ -34,7 +34,7 @@ let totalCount=0;
     // when reach 0 → reset again to 30
     if (counter <= 0) {
       totalCount=totalCount+1;
-      counter = 15;
+      counter = 30;
     }
   }, 1000);
 };
