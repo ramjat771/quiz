@@ -4,7 +4,7 @@ import { errorHandler } from "./middlewares/error_handler.mjs";
 import cors from "cors";
 
 const app = express();
-// app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 app.use('/web', express.static('web'));
