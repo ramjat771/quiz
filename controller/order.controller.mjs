@@ -7,7 +7,7 @@ import { CustomError } from "../utils/custom_error.mjs";
 // =========================
 export const createOrderController = async (req, res, next) => {
   try {
-    const { userId, orderAmount, chooseNumber, period } = req.body;
+    const { userId, orderAmount, chooseNumber, period ,winAmount} = req.body;
 
     if (!userId) throw new CustomError("userId is required", 400);
     if (!orderAmount) throw new CustomError("orderAmount required", 400);
@@ -18,7 +18,7 @@ export const createOrderController = async (req, res, next) => {
       userId,
       orderAmount,
       chooseNumber,
-      period
+      period,winAmount
     });
 
     return successResponse(res, order, "Order created");

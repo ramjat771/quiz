@@ -6,7 +6,9 @@ const orderSchema = new mongoose.Schema(
     orderAmount: { type: Number, required: true },
     chooseNumber: { type: String, required: true },
     result: { type: String, default: null }, // optional
-    period: { type: String, required: true }
+    period: { type: String, required: true },
+    winAmount: { type: Number, default: 0 }
+
   },
   { timestamps: true }
 );
