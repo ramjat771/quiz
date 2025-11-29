@@ -14,11 +14,11 @@ async function startServer() {
   // Create socket.io instance with sub-URL "/socket"
   const io = new Server(server, {
     path: "/socket",
-    cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
-  }
+  //   cors: {
+  //   origin: "*",
+  //   methods: ["GET", "POST"],
+  //   allowedHeaders: ["Content-Type"],
+  // }
 
   });
 
