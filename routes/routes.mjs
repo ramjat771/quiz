@@ -8,5 +8,5 @@ const router = Router();
 router.use("/user",userRoutes)
 router.use("/orders", orderRoutes);
 router.use("/balance",balanceRoutes)
-router.use("/withdrawal",balanceRoutes)
+router.use("/withdrawal",withdrawalRoutes)
 export default router;

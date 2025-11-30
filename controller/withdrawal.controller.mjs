@@ -2,22 +2,23 @@ import * as withdrawalService from "../services/withdrawal.service.mjs";
 import { successResponse } from "../utils/api_response.mjs";
 import { CustomError } from "../utils/custom_error.mjs";
 
-// Add withdrawal request
 export const createWithdrawalController = async (req, res, next) => {
   try {
-    const { userId, amount } = req.body;
+    const { userId, amount, data, type } = req.body;
 
     if (!userId) throw new CustomError("userId required", 400);
     if (!amount || typeof amount !== "number" || amount <= 0) {
       throw new CustomError("Amount must be a positive number", 400);
     }
 
-    const data = {
+    const payload = {
       userId,
-      amount
+      amount,
+      data: data || null,
+      type: type || "withdrawal"
     };
 
-    const result = await withdrawalService.createWithdrawal(data);
+    const result = await withdrawalService.createWithdrawal(payload);
 
     return successResponse(res, result, "Withdrawal request created");
   } catch (err) {

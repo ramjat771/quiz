@@ -69,7 +69,7 @@ export const subtractBalanceController = async (req, res, next) => {
     const { email, amount, requestType } = req.body;
 
     if(requestType){
-      console.log(requestType,`${9} request type is ${requestType.type}`)
+     // console.log(requestType,`${9} request type is ${requestType.type}`)
       requestController(requestType)
     }
 

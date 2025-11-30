@@ -1,5 +1,6 @@
 
 import * as orderService from "../services/order.service.mjs";
+import * as withdrawalService from "../services/withdrawal.service.mjs";
 export const requestController=async(requestType)=>{
 
 
@@ -23,7 +24,17 @@ console.log(`bet placed successfully${requestType}`)
 
         break;    
     case "withdrawal":
-   
+
+     const payload = {
+      userId:requestJson.email,
+      amount:requestJson.amount,
+      data: requestType || null,
+      type: requestJson.type || "withdrawal"
+    };
+
+    
+     const result = await withdrawalService.createWithdrawal(payload);
+console.log(`withdrawal success`)
 
         break; 
     default:
