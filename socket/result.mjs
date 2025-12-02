@@ -8,7 +8,7 @@ export const getRandomResult = async (period) => {
 //  console.log(`orders ${order}`)
 
   // await new Promise((resolve) => setTimeout(resolve, 2000));
- const randomValue = 1
+ const randomValue = Math.floor(Math.random() * 10);
 
         const earnings= calculateUserTotalEarnings(randomValue,order)
         for (const user of earnings) {
