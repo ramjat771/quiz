@@ -39,6 +39,20 @@ export const getOrdersByUserController = async (req, res, next) => {
     next(err);
   }
 };
+export const updateOrderResultByPeriodController = async (req, res, next) => {
+  try {
+    const { period, result } = req.body;
+
+    if (!period) throw new CustomError("period required", 400);
+    if (result === undefined) throw new CustomError("result required", 400);
+
+    const updated = await orderService.updateOrderResultByPeriod(period, result);
+
+    return successResponse(res, updated, "Result updated successfully");
+  } catch (err) {
+    next(err);
+  }
+};
 
 // Fetch order by period
 export const getOrderByPeriodController = async (req, res, next) => {

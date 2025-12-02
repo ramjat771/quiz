@@ -1,56 +1,34 @@
-
+import { getCurrentGameState } from "../socket/counter.mjs";
+import { CustomError } from "../utils/custom_error.mjs";
 import * as orderService from "../services/order.service.mjs";
-import * as withdrawalService from "../services/withdrawal.service.mjs";
-export const requestController=async(req,res,next)=>{
+export const requestController = async (req, res, next, requestType) => {
+  const requestJson = JSON.parse(requestType);
 
- const { requestType } = req.body;
-   const requestJson= JSON.parse(requestType)
-try{
-switch(requestJson.type){
+  switch (requestJson.type) {
     case "bet":
+      let gameState = getCurrentGameState();
 
-console.log(`bet placed start${requestType}`)
- if (requestJson?.type === "bet") {
+      if (requestJson.period == gameState.period&&gameState.counter>9) {
+        // only DB entry
+        return await orderService.createOrder({
+          userId: requestJson.email,
+          orderAmount: requestJson.amount,
+          chooseNumber: requestJson.selected,
+          period: requestJson.period,
+        });
+      } else {
+        throw new CustomError("Invalid period", 400);
+      }
 
-
-  await orderService.createOrder({
-    userId: requestJson.email,
-    orderAmount: requestJson.amount,
-    chooseNumber: requestJson.selected,
-    period: requestJson.period,
-  });
-
-
-
-}
-console.log(`bet placed successfully${requestType}`)
-
-        break;
-    case "add":
-   
-
-        break;    
     case "withdrawal":
+      return await withdrawalService.createWithdrawal({
+        userId: requestJson.email,
+        amount: requestJson.amount,
+        data: requestType,
+        type: "withdrawal",
+      });
 
-     const payload = {
-      userId:requestJson.email,
-      amount:requestJson.amount,
-      data: requestType || null,
-      type: requestJson.type || "withdrawal"
-    };
-     const result = await withdrawalService.createWithdrawal(payload);
-console.log(`withdrawal success`)
-
-        break; 
     default:
-        console.log(`default case `)      
-
-}
-
-console.log(`request type is ${requestJson.type} a\n request is ${requestJson}`)
-
-}catch(err){
-  next(err);
-}
-
-}
+      return null;
+  }
+};

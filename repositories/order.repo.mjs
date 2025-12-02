@@ -9,7 +9,7 @@ export const getOrdersByUserRepo = async (email) => {
 };
 
 export const getOrderByPeriodRepo = async (period) => {
-  return await Order.findOne({ period });
+  return await Order.find({ period });
 };
 
 export const updateOrderResultRepo = async (period, result) => {
@@ -23,3 +23,12 @@ export const updateOrderResultRepo = async (period, result) => {
 export const deleteOrderRepo = async (id) => {
   return await Order.findByIdAndDelete(id);
 };
+
+export const updateOrderResultByPeriodRepo = async (period, result) => {
+  return await Order.updateMany(
+    { period: period },           // exact match
+    { $set: { result: result } }, // update result
+    { new: true }
+  );
+};
+

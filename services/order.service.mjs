@@ -19,3 +19,7 @@ export const updateOrderResult = async (period, result) => {
 export const deleteOrder = async (id) => {
   return await orderRepo.deleteOrderRepo(id);
 };
+export const updateOrderResultByPeriod = async (period, result) => {
+  return await orderRepo.updateOrderResultByPeriodRepo(period, result);
+};
+

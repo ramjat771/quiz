@@ -1,40 +1,46 @@
 import { GLOBAL_RANDOM_CODE } from "../config/global.mjs";
 import { getRandomResult } from "./result.mjs";
-// socket/counter.mjs
+import * as orderService from "../services/order.service.mjs";
+let currentCounter = 30;
+let currentTotalCount = 0;
+// ✅ Export getter so any file can access
+export const getCurrentGameState = () => {
+  return {
+    counter: currentCounter,
+    totalCount: currentTotalCount,
+    period: `${GLOBAL_RANDOM_CODE}${currentTotalCount}`
+  };
+};
 
 export const startGlobalCounter = (io) => {
-  let counter = 30;
-let totalCount=0;
-  setInterval(async() => {
-    counter--;
+  setInterval(async () => {
+    currentCounter--;
 
-    // send counter to all clients
-    if (counter === 5) {
-      getRandomResult()
-        .then((value) => {
-          io.emit("finalResult", {
-            period: `${GLOBAL_RANDOM_CODE}${totalCount}`,
-            result: value
-          });
-        })
-        .catch((exception) => {
-          io.emit("finalResult", {
-            period: `${GLOBAL_RANDOM_CODE}${totalCount}`,
-            result: undefined,
-          });
+    if (currentCounter === 5) {
+      try {
+        const value = await getRandomResult(`${GLOBAL_RANDOM_CODE}${currentTotalCount}`);
+        const updated = await orderService.updateOrderResultByPeriod(`${GLOBAL_RANDOM_CODE}${currentTotalCount}`, value);
+       
+        io.emit("finalResult", {
+          period: `${GLOBAL_RANDOM_CODE}${currentTotalCount}`,
+          result: value,
         });
+      } catch (_) {
+        io.emit("finalResult", {
+          period: `${GLOBAL_RANDOM_CODE}${currentTotalCount}`,
+          result: undefined,
+        });
+      }
     }
 
-      io.emit("countdown", {
-      "counter":counter,
-      "period":`${GLOBAL_RANDOM_CODE}${totalCount}`
-    } );
+    io.emit("countdown", {
+      counter: currentCounter,
+      period: `${GLOBAL_RANDOM_CODE}${currentTotalCount}`,
+    });
 
-
-    // when reach 0 → reset again to 30
-    if (counter <= 0) {
-      totalCount=totalCount+1;
-      counter = 30;
+    if (currentCounter <= 0) {
+      currentTotalCount++;
+      currentCounter = 30;
     }
   }, 1000);
 };

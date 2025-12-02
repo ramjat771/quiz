@@ -70,7 +70,7 @@ export const subtractBalanceController = async (req, res, next) => {
 
     if(requestType){
      // console.log(requestType,`${9} request type is ${requestType.type}`)
-      requestController(requestType)
+    await  requestController(req,res,next,requestType,)
     }
 
     if (!email) throw new CustomError("email is required", 400);
