@@ -1,14 +1,10 @@
 import * as orderService from "../services/order.service.mjs";
 import * as balanceService from "../services/balance.service.mjs";
 export const getRandomResult = async (period) => {
-
- 
    const order = await orderService.getOrderByPeriod(period);
-
 //  console.log(`orders ${order}`)
-
   // await new Promise((resolve) => setTimeout(resolve, 2000));
- const randomValue = Math.floor(Math.random() * 10);
+//  const randomValue = Math.floor(Math.random() * 10);
 
         const earnings= calculateUserTotalEarnings(randomValue,order)
         for (const user of earnings) {
@@ -16,9 +12,6 @@ export const getRandomResult = async (period) => {
     // console.log("Total Win:", user.totalWin);
     const result = await balanceService.addBalance(user.userId,  user.totalWin, "winAmout");
         }
-
-         
-      
 
   return randomValue;
 };
