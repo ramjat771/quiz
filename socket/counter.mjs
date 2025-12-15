@@ -24,14 +24,14 @@ export const startGlobalCounter = (io) => {
 
 if(quizInitTimer==1){
  quizModel=await questionInit(quizId)
- if(quizId==10){
+ if(quizId==6){
   quizId=1;
  }
 quizId++;
 
 }
 
-    if (currentCounter == 5) {
+    if (currentCounter == 10) {
       console.log("<<<<<<<10")
       try {
        
