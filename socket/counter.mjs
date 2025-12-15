@@ -3,7 +3,7 @@ import { GLOBAL_RANDOM_CODE } from "../config/global.mjs";
 import * as quizService from "../services/quiz.service.mjs";
 
 import { QuizDataModel } from "../data_model/quiz_data_model.mjs";
-let currentCounter = 10;
+let currentCounter = 12;
 let currentTotalCount = 0;
 let quizInitTimer=0;
 let quizModel;
@@ -24,7 +24,7 @@ export const startGlobalCounter = (io) => {
 
 if(quizInitTimer==1){
  quizModel=await questionInit(quizId)
- if(quizId==6){
+ if(quizId==10){
   quizId=1;
  }
 quizId++;
@@ -51,7 +51,7 @@ quizId++;
     });
 
     if (currentCounter <= 0) {
-      currentCounter = 10;
+      currentCounter = 12;
     }
 
     if(quizInitTimer==180){
