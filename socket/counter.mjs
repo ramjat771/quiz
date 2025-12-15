@@ -7,7 +7,7 @@ let currentCounter = 10;
 let currentTotalCount = 0;
 let quizInitTimer=0;
 let quizModel;
-let quizId=0;
+let quizId=1;
 // ✅ Export getter so any file can access
 export const getCurrentGameState = () => {
   return {
@@ -25,7 +25,7 @@ export const startGlobalCounter = (io) => {
 if(quizInitTimer==1){
  quizModel=await questionInit(quizId)
  if(quizId==6){
-  quizId=0;
+  quizId=1;
  }
 quizId++;
 
