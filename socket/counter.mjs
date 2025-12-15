@@ -1,8 +1,13 @@
 import { GLOBAL_RANDOM_CODE } from "../config/global.mjs";
-import { getRandomResult } from "./result.mjs";
-import * as orderService from "../services/order.service.mjs";
-let currentCounter = 30;
+
+import * as quizService from "../services/quiz.service.mjs";
+
+import { QuizDataModel } from "../data_model/quiz_data_model.mjs";
+let currentCounter = 10;
 let currentTotalCount = 0;
+let quizInitTimer=0;
+let quizModel;
+let quizId=0;
 // ✅ Export getter so any file can access
 export const getCurrentGameState = () => {
   return {
@@ -15,32 +20,48 @@ export const getCurrentGameState = () => {
 export const startGlobalCounter = (io) => {
   setInterval(async () => {
     currentCounter--;
+    quizInitTimer++;
 
-    if (currentCounter === 5) {
+if(quizInitTimer==1){
+ quizModel=await questionInit(quizId)
+ if(quizId==6){
+  quizId=0;
+ }
+quizId++;
+
+}
+
+    if (currentCounter == 5) {
+      console.log("<<<<<<<10")
       try {
-        const value = await getRandomResult(`${GLOBAL_RANDOM_CODE}${currentTotalCount}`);
-        const updated = await orderService.updateOrderResultByPeriod(`${GLOBAL_RANDOM_CODE}${currentTotalCount}`, value);
        
-        io.emit("finalResult", {
+        io.emit("question", {
           period: `${GLOBAL_RANDOM_CODE}${currentTotalCount}`,
-          result: value,
+          question: quizModel.getNextQuestion(),
         });
       } catch (_) {
-        io.emit("finalResult", {
-          period: `${GLOBAL_RANDOM_CODE}${currentTotalCount}`,
-          result: undefined,
-        });
+ console.log(`catch called`)
       }
+      return;
     }
 
     io.emit("countdown", {
-      counter: currentCounter,
+      counter: `${currentCounter}`,
       period: `${GLOBAL_RANDOM_CODE}${currentTotalCount}`,
     });
 
     if (currentCounter <= 0) {
-      currentTotalCount++;
-      currentCounter = 30;
+      currentCounter = 10;
+    }
+
+    if(quizInitTimer==180){
+      quizInitTimer=0;
     }
   }, 1000);
 };
+async function questionInit(quizId){
+
+   const quiz = await quizService.getQuizById(quizId);
+  const qmodel= new QuizDataModel(quiz)
+   return qmodel
+}
